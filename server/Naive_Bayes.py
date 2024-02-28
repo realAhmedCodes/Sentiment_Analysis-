@@ -18,11 +18,12 @@ sents = pd.read_csv(
 
 app.add_middleware(
     CORSMiddleware,
-    allow_origins=["*"],
+    allow_origins=["http://localhost:3000"],
     allow_credentials=True,
     allow_methods=["*"],
     allow_headers=["*"],
 )
+
 
 X_train, X_test, y_train, y_test = train_test_split(
     sents['Reviews'], sents['Sentiments'], test_size=0.2, random_state=42)
