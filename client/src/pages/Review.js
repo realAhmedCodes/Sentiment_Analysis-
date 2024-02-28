@@ -1,4 +1,6 @@
 import React, { useState } from "react";
+import styles from  "../styles/Review.module.css"
+
 
 export const Review = () => {
   const [review, setReview] = useState("");
@@ -21,14 +23,19 @@ export const Review = () => {
   };
 
   return (
-    <div>
-      <label htmlFor="review">Enter Review To Check Sentiment</label>
+    <div className={styles.main_div}>
+      <label className={styles.label} htmlFor="review">
+        Enter Review To Check Sentiment
+      </label>
       <input
         type="text"
         value={review}
         onChange={(e) => setReview(e.target.value)}
+        className={styles.input}
       />
-      <button onClick={analyzeSentiment}>Analyze Sentiment</button>
+      <button className={styles.btn} onClick={analyzeSentiment}>
+        Analyze Sentiment
+      </button>
       {sentiment && <p>Sentiment: {sentiment}</p>}
     </div>
   );
