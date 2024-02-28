@@ -46,11 +46,14 @@ class SentimentResponse(BaseModel):
 
 @app.post("/analyze-sentiment", response_model=SentimentResponse)
 async def analyze_sentiment(request: SentimentRequest):
-
-    text = [request.text]
-    text_vectorized = model.transform(text)
-    result = classifier.predict(text_vectorized)[0]
-    return {"sentiment": result}
+    if request.text=="":
+        return{"sentiment": "Write Something"}
+    else:
+            
+     text = [request.text]
+     text_vectorized = model.transform(text)
+     result = classifier.predict(text_vectorized)[0]
+     return {"sentiment": result}
 
 
 @app.get("/")
